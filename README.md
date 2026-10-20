@@ -46,6 +46,12 @@ docs/agents/implementer.md，再运行 python scripts/workflow.py next。
 | [模板](.agents/skills/architect-orchestrator/assets/templates) | 功能、任务、实施、审查与变更文档 |
 | [项目配置](docs/project/config.json) | 控制分支、远程和顺序执行规则 |
 
+## 验证程度
+
+这是一套为本项目建立的初版协作框架。分支交接、合入前审查、代码变化后重新审查等工程机制与 [GitHub 分支保护的做法](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) 一致。
+
+本仓库目前的验证证据是 17 项自动测试和一次独立 Agent 的完整交接试运行，详情见 [交付检查](docs/reviews/F0001-bootstrap.md)。尚未经过长期、多项目或多种模型运行器的实际使用验证；真实业务接入后，架构师应根据出现的问题修改规则、补充必要验证，再提交到 Git。测试通过也不等同于已经具备后台调度、远程认证和平台权限控制。
+
 ## 工作节奏
 
 ```text
