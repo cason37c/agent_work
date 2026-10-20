@@ -1,0 +1,25 @@
+{
+  "id": "T0001",
+  "title": "替换为实际任务名称",
+  "status": "DRAFT",
+  "priority": 10,
+  "requires": [],
+  "acceptance_ids": ["AC-01"],
+  "artifacts": {
+    "requirements": "docs/features/F0002-example/requirements.md",
+    "design": "docs/features/F0002-example/design.md",
+    "brief": "docs/tasks/T0001/brief.md"
+  },
+  "spec_commit": null,
+  "owner": null,
+  "previous_owners": [],
+  "branch": null,
+  "base_commit": null,
+  "submission_head": null,
+  "implementation_report": null,
+  "review": null,
+  "integrated_commit": null,
+  "integration_evidence": [],
+  "blocked_from": null,
+  "blocked_reason": null
+}

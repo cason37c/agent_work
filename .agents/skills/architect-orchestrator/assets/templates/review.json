@@ -1,0 +1,19 @@
+{
+  "task_id": "T0001",
+  "reviewer": "填写独立审查者的会话标识",
+  "reviewed_head": "填写完整的 submission_head SHA",
+  "reviewed_base": "填写完整的 base_commit SHA",
+  "verdict": "CHANGES_REQUESTED",
+  "checks": {
+    "requirements": "FAIL",
+    "design": "PASS",
+    "standards": "PASS",
+    "verification": "BLOCKED"
+  },
+  "acceptance": [
+    {"id": "AC-01", "result": "FAIL", "evidence": "填写具体文件、命令和结果"}
+  ],
+  "findings": [
+    {"id": "R-01", "severity": "P2", "status": "OPEN", "evidence": "填写位置、触发条件、影响和修复标准"}
+  ]
+}

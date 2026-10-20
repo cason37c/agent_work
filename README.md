@@ -1,0 +1,75 @@
+# 架构师 Agent 与 Git 任务协作
+
+你提出需求，架构师把需求说明书、设计文档、任务单和验收标准提交到 Git；编码 Agent 从 Git 领取任务并提交实现；架构师审查指定提交，验收合入后释放下一项任务。
+
+## 开始使用
+
+```text
+git clone https://github.com/cason37c/agent_work.git
+cd agent_work
+python scripts/workflow.py validate
+python scripts/workflow.py next
+```
+
+需要 Git 和 Python 3.10 或更新版本，脚本只使用 Python 标准库。当前仓库提供协作框架，尚无业务任务。`next` 是只读建议，不会领取任务或启动模型。
+
+将以下提示交给负责架构的模型，并让它能够访问本仓库：
+
+```text
+你是本项目的架构师与验收负责人。先同步仓库，读取 AGENTS.md，
+再读取 .agents/skills/architect-orchestrator/SKILL.md，并按其中的协作协议工作。
+我接下来会描述需求。请将需求、设计、任务和验收规则写入 Git 并推送，
+交给编码 Agent 实现；对每次提交做审查并留下可追溯的验收结论。
+```
+
+将以下提示交给另一个负责实现的模型：
+
+```text
+你是本项目的编码 Agent。先同步仓库，读取 AGENTS.md 和
+docs/agents/implementer.md，再运行 python scripts/workflow.py next。
+按协议领取一个任务，从任务绑定的 Git 规格实现、验证并提交到任务分支，
+将主分支状态更新为 IN_REVIEW 后交接。审查通过并合入、标记 DONE 后再领取下一项。
+若需返工，继续当前任务；若等待审查，保留交接信息并在外部运行环境再次唤醒时继续。
+```
+
+支持技能的环境也可加载仓库中的 `.agents/skills/architect-orchestrator`，以 `$architect-orchestrator` 调用。其他模型按上述路径读取 Markdown 即可，不依赖特定厂商。
+
+## 文件入口
+
+| 文件 | 用途 |
+| --- | --- |
+| [架构师技能](.agents/skills/architect-orchestrator/SKILL.md) | 需求、设计、拆解、审查与后续功能管理 |
+| [协作协议](.agents/skills/architect-orchestrator/references/workflow.md) | 状态机、分支交接、验收门槛和异常恢复的权威规则 |
+| [编码 Agent 规则](docs/agents/implementer.md) | 领取、实现、提交、返工与继续下一任务 |
+| [需求说明书](docs/features/F0001-agent-workflow/requirements.md) | 这套协作机制的需求和验收项 |
+| [设计文档](docs/features/F0001-agent-workflow/design.md) | Git 存储、职责、提交顺序及工具边界 |
+| [模板](.agents/skills/architect-orchestrator/assets/templates) | 功能、任务、实施、审查与变更文档 |
+| [项目配置](docs/project/config.json) | 控制分支、远程和顺序执行规则 |
+
+## 工作节奏
+
+```text
+人类需求 → 需求/设计 → READY → 领取并实现 → IN_REVIEW
+                                           ↓
+下一项 ← DONE ← 合入并验证 ← ACCEPTED ← 架构师审查
+                                           ↓ 不通过
+                           再次审查 ← 返工 ← CHANGES_REQUESTED
+```
+
+顺序执行表示前一任务 `DONE` 后才能领取下一项。需求不充分时先形成 `DRAFT`；需要人类决定的阻塞写入 Git 后提问，不用猜测替代关键产品决定。普通实施选择由 Agent 自行处理。
+
+## 检查与运行边界
+
+```text
+python scripts/workflow.py validate
+python scripts/workflow.py next
+python -m unittest discover -s tests -v
+```
+
+每次领取前先 `git fetch origin`、切换到 `main` 并 `git pull --ff-only origin main`。`next` 检查本地是否与已获取的远程主分支一致；它不会主动联网，无法发现尚未 fetch 的更新。最终以领取状态提交能否成功 push 为准。
+
+结构检查可以发现缺失规格、依赖循环、并行领取、审查 SHA 不匹配及不完整的完成记录。它无法判断实现是否正确、测试证据是否真实，也不能验证填入的角色身份；这些属于架构师审查和托管平台权限的职责。
+
+本仓库没有后台调度器。两个模型需要分别由人或外部执行器启动；持续运行的执行器可在唤醒后读取队列继续。Git 提交不会自行唤醒另一个模型。
+
+接入业务代码时可直接在本仓库开发，或将协作文件迁移到已有业务仓库。不要覆盖已有 `AGENTS.md`：应合并入口和项目约束，并调整 `config.json`。生产发布、删除数据等操作由具体项目另行定义授权。

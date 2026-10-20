@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "remote": "origin",
+  "control_branch": "main",
+  "task_root": "docs/tasks",
+  "max_active_tasks": 1,
+  "merge_method": "merge-commit",
+  "project_checks": [
+    "python scripts/workflow.py validate",
+    "python -m unittest discover -s tests -v"
+  ]
+}

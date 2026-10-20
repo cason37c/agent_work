@@ -1,0 +1,4 @@
+interface:
+  display_name: "架构师与验收 Agent"
+  short_description: "通过 Git 编写需求与设计、拆分任务，审查编码提交并验收后放行下一任务"
+  default_prompt: "使用 $architect-orchestrator 将我的需求变成 Git 中的需求、设计与任务，并负责后续代码审查和验收。"
