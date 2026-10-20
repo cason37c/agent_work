@@ -4,6 +4,8 @@
 
 开始工作时先读 [README.md](README.md) 和 [协作协议](.agents/skills/architect-orchestrator/references/workflow.md)。
 
+需求梳理、技术选型解释及接受用户修正的方式遵循 [协作约定](docs/project/working-agreement.md)。
+
 - 架构师：读取 [.agents/skills/architect-orchestrator/SKILL.md](.agents/skills/architect-orchestrator/SKILL.md)。
 - 编码 Agent：读取 [docs/agents/implementer.md](docs/agents/implementer.md)。
 - 配置以 [docs/project/config.json](docs/project/config.json) 为准；任务状态以主分支 `docs/tasks/T*/task.json` 为准。

@@ -1,8 +1,16 @@
 # 架构师 Agent 与 Git 任务协作
 
-你提出需求，架构师把需求说明书、设计文档、任务单和验收标准提交到 Git；编码 Agent 从 Git 领取任务并提交实现；架构师审查指定提交，验收合入后释放下一项任务。
+你提出想法，架构师统一梳理需求、解释技术选型，再把需求说明书、设计文档、任务单和验收标准提交到 Git；编码 Agent 从 Git 领取任务并提交实现；架构师审查指定提交，验收合入后释放下一项任务。
 
 ## 开始使用
+
+已安装个人入口时，在新窗口直接说：
+
+> 架构师模式，我想做一个……
+
+需求沟通、技术选型解释和接受用户修正的方式见 [协作约定](docs/project/working-agreement.md)。需求不完整也可以开始，架构师负责继续梳理。
+
+下面的仓库入口适用于尚未配置个人技能的环境：
 
 ```text
 git clone https://github.com/cason37c/agent_work.git
@@ -39,6 +47,7 @@ docs/agents/implementer.md，再运行 python scripts/workflow.py next。
 | 文件 | 用途 |
 | --- | --- |
 | [架构师技能](.agents/skills/architect-orchestrator/SKILL.md) | 需求、设计、拆解、审查与后续功能管理 |
+| [协作约定](docs/project/working-agreement.md) | 单一架构师模式、技术选型解释和用户修正 |
 | [协作协议](.agents/skills/architect-orchestrator/references/workflow.md) | 状态机、分支交接、验收门槛和异常恢复的权威规则 |
 | [编码 Agent 规则](docs/agents/implementer.md) | 领取、实现、提交、返工与继续下一任务 |
 | [需求说明书](docs/features/F0001-agent-workflow/requirements.md) | 这套协作机制的需求和验收项 |
