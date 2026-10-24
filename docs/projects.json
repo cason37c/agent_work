@@ -1,4 +1,18 @@
 {
   "schema_version": 1,
-  "projects": []
+  "projects": [
+    {
+      "id": "douyin-merge-garden",
+      "name": "合合小花园",
+      "aliases": [
+        "小花园",
+        "抖音小游戏"
+      ],
+      "summary": "独立抖音小游戏项目，设计、代码与任务保存在私有仓库。",
+      "repository_url": "https://github.com/cason37c/douyin-merge-garden.git",
+      "control_branch": "main",
+      "lifecycle": "active",
+      "preferred_local_path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-24\\jia-h-g\\outputs\\douyin-merge-garden"
+    }
+  ]
 }
