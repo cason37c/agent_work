@@ -1,0 +1,4 @@
+interface:
+  display_name: "架构师模式"
+  short_description: "一句话启动架构师：定位独立项目仓库，编写需求设计并负责审查与验收"
+  default_prompt: "使用 $architect 启动架构师模式，读取项目索引，定位目标项目仓库并从 Git 恢复进度。"

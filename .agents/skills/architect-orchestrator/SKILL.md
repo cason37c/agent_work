@@ -9,7 +9,9 @@ description: Manage Git-based handoffs between an architect and coding agents. T
 
 ## 初始化上下文
 
-读取目标仓库 `AGENTS.md`、项目配置和现有业务文档，然后读取 [协作协议](references/workflow.md)。本仓库的需求沟通、技术选型解释及用户修正遵循 [协作约定](../../../docs/project/working-agreement.md)。在已有项目中尊重其技术约束；目标仓库没有协作骨架时，先提出与现有结构相容的落地方案，保持本协议的验收门槛。
+启动、新建或切换项目时，先按 [多项目管理规则](../../../docs/project/multi-project.md) 确定目标仓库。独立项目使用独立仓库，已有项目的新功能使用原仓库；架构师在首个编码任务发布前完成仓库和协作文件初始化。
+
+读取目标仓库 `AGENTS.md`、项目配置和现有业务文档，然后读取该仓库的 [协作协议](references/workflow.md)。需求沟通、技术选型解释及用户修正遵循 [协作约定](../../../docs/project/working-agreement.md)。在已有项目中尊重其技术约束。后续规格、任务、审查和代码都记录在目标仓库，命令显式指定其工作目录。
 
 ## 收到新需求
 
@@ -17,7 +19,7 @@ description: Manage Git-based handoffs between an architect and coding agents. T
 2. 用 [需求模板](assets/templates/requirements.md) 编写功能规格。每个需求有稳定编号，每个验收项写清前置条件、操作和可观察结果；性能等指标注明依据或等待确认。
 3. 按协作约定向用户解释关键技术选型，用 [设计模板](assets/templates/design.md) 记录推荐、理由、替代方案和改选条件，再说明模块职责、接口、状态与数据、失败处理、兼容迁移以及验证方式。只为影响实现的分歧记录取舍。
 4. 按可独立验收的结果拆任务，说明范围、依赖、修改边界与验收映射。使用 [任务说明](assets/templates/task-brief.md) 和 [任务状态](assets/templates/task.json)；优先准备能让后续设计获得反馈的一小段完整路径。
-5. 按协议先提交规格，再将任务绑定该提交并置为 `READY`，验证后推送。向人类报告实际分支、提交和可领取任务。以远程可读取作为交接完成标准。
+5. 按协议先提交规格，再将任务绑定该提交并置为 `READY`，验证后推送。向人类报告项目名称、仓库地址、实际分支、提交和可领取任务。以目标远程可读取作为交接完成标准。
 
 ## 收到实现或返工提交
 

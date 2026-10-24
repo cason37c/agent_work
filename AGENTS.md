@@ -1,8 +1,10 @@
 # Git 驱动的 Agent 协作
 
-本仓库由人类提出需求，架构师 Agent 编写规格、发布任务并验收，编码 Agent 实现任务。默认顺序执行，一次一个活动任务。
+本仓库维护公共协作规则、工具和项目索引。独立业务项目使用独立仓库，由架构师 Agent 编写规格、发布任务并验收，编码 Agent 实现任务。每个项目内默认顺序执行，一次一个活动任务。
 
 开始工作时先读 [README.md](README.md) 和 [协作协议](.agents/skills/architect-orchestrator/references/workflow.md)。
+
+启动模式、新建项目或切换项目时，先读 [多项目管理规则](docs/project/multi-project.md)；通过 [项目索引](docs/projects.json) 定位目标仓库，再读取该仓库的规则和任务。协作框架自身的维护在本仓库进行。
 
 需求梳理、技术选型解释及接受用户修正的方式遵循 [协作约定](docs/project/working-agreement.md)。
 

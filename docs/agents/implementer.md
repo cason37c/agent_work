@@ -4,9 +4,10 @@
 
 ## 每次开始或恢复
 
-1. 同步控制分支，检查未提交文件，运行 `python scripts/workflow.py validate` 和 `python scripts/workflow.py next`。
-2. `CLAIM`：按协议将领取状态推送成功，再建立任务分支。`RESUME`：核对 owner，继续自己的任务；别人的任务应交接给原负责人，不擅自接管。架构师可在 Git 中记录接管原因，将旧 owner 加入 previous_owners 后调整 owner。
-3. `WAIT_REVIEW` / `INTEGRATE`：等待架构师；`BLOCKED`：读取恢复条件；`IDLE`：等待新需求。记录当前状态并按宿主机制等待/退出，下一次唤醒重新同步。
+1. 根据交接中的仓库地址核对本地远程，进入目标项目仓库并读取其 `AGENTS.md`。任务 ID 在各仓库内独立编号，目标不明确时先定位仓库。仓库由架构师在立项时准备，编码 Agent 按已发布任务实施。
+2. 同步目标仓库的控制分支，检查未提交文件，运行 `python scripts/workflow.py validate` 和 `python scripts/workflow.py next`。
+3. `CLAIM`：按协议将领取状态推送成功，再建立任务分支。`RESUME`：核对 owner，继续自己的任务；别人的任务应交接给原负责人，不擅自接管。架构师可在 Git 中记录接管原因，将旧 owner 加入 previous_owners 后调整 owner。
+4. `WAIT_REVIEW` / `INTEGRATE`：等待架构师；`BLOCKED`：读取恢复条件；`IDLE`：等待新需求。记录当前状态并按宿主机制等待/退出，下一次唤醒重新同步。
 
 ## 实施契约
 
@@ -16,7 +17,7 @@
 
 ## 交接与返工
 
-先推送实现分支，再将控制分支任务登记为 `IN_REVIEW`，写入精确 SHA 和该提交中的实施报告路径。报告人类可读的任务 ID、分支、SHA 和结果；状态提交 push 成功才算交接。
+先推送实现分支，再将控制分支任务登记为 `IN_REVIEW`，写入精确 SHA 和该提交中的实施报告路径。报告人类可读的项目名称、仓库地址、任务 ID、分支、SHA 和结果；状态提交 push 成功才算交接。
 
 若为 `CHANGES_REQUESTED`，读取该任务 `review` 指向的审查记录；将主分支状态改为 `IN_PROGRESS`、清空 review 指针并推送，再沿原任务分支修复。旧审查文件保留，每轮新增报告；重新提交审查时登记新 SHA。
 

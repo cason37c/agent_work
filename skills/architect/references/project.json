@@ -1,0 +1,9 @@
+{
+  "schema_version": 2,
+  "role": "management-hub",
+  "repository_url": "https://github.com/cason37c/agent_work.git",
+  "preferred_local_path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-20\\agent-git-git-git-git-review-2\\outputs\\agent_work",
+  "registry_path": "docs/projects.json",
+  "project_protocol": "docs/project/multi-project.md",
+  "architect_entrypoint": ".agents/skills/architect-orchestrator/SKILL.md"
+}
